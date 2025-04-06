@@ -1,0 +1,17 @@
+---
+meta:
+  environment: python
+  toolchain:
+    name: pip
+    version: 3.11
+
+build:
+  requirementsPath: requirements.txt
+
+run:
+  command: gunicorn --config gunicorn_config.py wsgi:app
+  persistenceMount: /data
+  containerPort: 8080
+  ports:
+    - port: 8080
+      type: http
